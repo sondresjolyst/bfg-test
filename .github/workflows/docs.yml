@@ -1,0 +1,27 @@
+name: 📚 Generate docs
+
+on:
+  release: 
+    types: released
+  workflow_dispatch: {}
+
+env:
+  # Used by GitHub CLI inside script for authenticating to GitHub
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  WORKFLOWS_PATH: ${{ github.workspace }}/.github/workflows
+  OUTPUT_PATH: ${{ github.workspace }}/docs/workflows
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: scripts/actions-docs
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run script
+        run: echo "foo"
