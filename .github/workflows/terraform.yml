@@ -134,9 +134,21 @@ jobs:
         id: fmt
         run: terraform fmt -check
 
+      - name: Debug Before Init
+        run: |
+          echo "Contents of the cache directory:"
+          ls -la ~/.terraform.d/plugin-cache
+          echo "Contents of the .terraform.lock.hcl file:"
+          cat .terraform.lock.hcl
+
       - name: Terraform Init
         id: init
         run: terraform init
+
+      - name: Debug After Init
+        run: |
+          echo "Contents of the cache directory after init:"
+          ls -la ~/.terraform.d/plugin-cache
 
       - name: Terraform Validate
         id: validate
