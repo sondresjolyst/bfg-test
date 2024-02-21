@@ -131,11 +131,7 @@ jobs:
         run: |
           echo "Contents of the cache directory:"
           ls -la ~/.terraform.d/plugin-cache
-        
-      - name: Terraform Init
-        id: init
-        run: terraform init
-          
+
       - name: Cache Terraform
         uses: actions/cache@v4
         with:
@@ -144,6 +140,11 @@ jobs:
           key: ${{ runner.os }}-terraform-${{ hashFiles('**/.terraform.lock.hcl') }}
           restore-keys: |
             ${{ runner.os }}-terraform-
+        
+      - name: Terraform Init
+        id: init
+        run: terraform init
+          
       - name: Debug After Init
         run: |
           echo "Contents of the .terraform.lock.hcl file:"
