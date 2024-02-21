@@ -13,7 +13,7 @@ on:
 jobs:
   deploy-dev:
     name: Deploy dev
-    uses: equinor/ops-actions/.github/workflows/terraform.yml@237-cache-terraform-provider-plugins
+    uses: sondresjolyst/bfg-test/.github/workflows/terraform.yml@master
     with:
       environment: dev
       working_directory: terraform/envs/dev/core
