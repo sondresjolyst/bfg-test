@@ -10,6 +10,14 @@ on:
 
   workflow_dispatch: {}
 
+permissions:
+  # Set permissions required to login to Azure using OIDC.
+  id-token: write
+  contents: read
+
+  # Set permission required to delete artifacts.
+  actions: write
+
 jobs:
   deploy-dev:
     name: Deploy dev
