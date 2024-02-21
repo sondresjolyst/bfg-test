@@ -123,19 +123,18 @@ jobs:
           echo 'plugin_cache_dir="$HOME/.terraform.d/plugin-cache"' >~/.terraformrc
           mkdir --parents ~/.terraform.d/plugin-cache
 
-          
-          - name: Terraform Format
-          id: fmt
-          run: terraform fmt -check
-          
-          - name: Debug Before Init
-          run: |
+      - name: Terraform Format
+        id: fmt
+        run: terraform fmt -check
+      
+      - name: Debug Before Init
+        run: |
           echo "Contents of the cache directory:"
           ls -la ~/.terraform.d/plugin-cache
-          
-          - name: Terraform Init
-          id: init
-          run: terraform init
+        
+      - name: Terraform Init
+        id: init
+        run: terraform init
           
       - name: Cache Terraform
         uses: actions/cache@v4
