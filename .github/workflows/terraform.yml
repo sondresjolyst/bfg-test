@@ -116,9 +116,7 @@ jobs:
 
       - name: Config Terraform plugin cache
         run: |
-          cat <<- EOF > ~/.terraformrc
-          plugin_cache_dir="$HOME/.terraform.d/plugin-cache"
-          EOF
+          echo 'plugin_cache_dir="$HOME/.terraform.d/plugin-cache"' >~/.terraformrc
           mkdir --parents ~/.terraform.d/plugin-cache
 
       - name: Cache Terraform
