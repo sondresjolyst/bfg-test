@@ -1,0 +1,6 @@
+{
+  "resource_group_name": "rg-testing-sosj",
+  "storage_account_name": "tfstate32417",
+  "container_name": "tfstate",
+  "use_azuread_auth": true
+}

@@ -1,0 +1,32 @@
+name: Deploy core
+run-name: Deploy core from ${{ github.ref_name }}
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+    - terraform/envs/*/core/**
+    - terraform/modules/core/**
+
+  workflow_dispatch: {}
+
+jobs:
+  deploy-dev:
+    name: Deploy dev
+    uses: equinor/ops-actions/.github/workflows/terraform.yml@237-cache-terraform-provider-plugins
+    with:
+      environment: dev
+      working_directory: terraform/envs/dev/core
+      terraform_version: 1.7.4
+      backend_config: ../../../non-prod.azurerm.tfbackend.json
+    secrets: inherit
+
+  # deploy-prod:
+  #   name: Deploy prod
+  #   uses: equinor/ops-actions/.github/workflows/terraform.yml@237-cache-terraform-provider-plugins
+  #   with:
+  #     environment: prod
+  #     working_directory: terraform/envs/prod/core
+  #     terraform_version: 1.7.4
+  #     backend_config: ../../../prod.azurerm.tfbackend.json
+  #   secrets: inherit
