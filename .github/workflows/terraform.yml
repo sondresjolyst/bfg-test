@@ -122,6 +122,11 @@ jobs:
           EOF
           mkdir --parents ${{ env.TF_PLUGIN_CACHE_DIR }}
 
+      - name: list plugin cache
+        run: |
+          ls ~/.terraform.d/
+          cat ~/.terraform.d/plugin-cache
+
       - name: Terraform Format
         id: fmt
         run: terraform fmt -check
