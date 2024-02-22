@@ -75,7 +75,7 @@ env:
   TF_IN_AUTOMATION: true
 
   TF_CLI_ARGS_init: -backend-config=${{ inputs.backend_config }}
-  TF_PLUGIN_CACHE_DIR: .terraform.d/plugin-cache
+  TF_PLUGIN_CACHE_DIR: ~/.terraform.d/plugin-cache
 
   # Configure OIDC authentication to Azure using environment variables.
   # Required by the AzureRM backend and provider.
@@ -118,9 +118,9 @@ jobs:
       - name: Config Terraform plugin cache
         run: |
           cat <<- EOF > ~/.terraformrc
-          plugin_cache_dir="$HOME/${{ env.TF_PLUGIN_CACHE_DIR }}"
+          plugin_cache_dir="${{ env.TF_PLUGIN_CACHE_DIR }}"
           EOF
-          mkdir --parents ~/${{ env.TF_PLUGIN_CACHE_DIR }}
+          mkdir --parents ${{ env.TF_PLUGIN_CACHE_DIR }}
 
       - name: Terraform Format
         id: fmt
@@ -130,7 +130,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: |
-            ~/${{ env.TF_PLUGIN_CACHE_DIR }}
+            ${{ env.TF_PLUGIN_CACHE_DIR }}
           # path: |
           #   ~/.terraform.d/plugin-cache
           key: ${{ runner.os }}-terraform-${{ hashFiles('**/.terraform.lock.hcl') }}
