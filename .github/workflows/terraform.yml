@@ -127,9 +127,9 @@ jobs:
       - name: Config Terraform plugin cache
         run: |
           cat <<- EOF > ~/.terraformrc
-          plugin_cache_dir="${{ env.TF_PLUGIN_CACHE_DIR }}"
+          plugin_cache_dir="$HOME/.terraform.d/plugin-cache"
           EOF
-          mkdir --parents ${{ env.TF_PLUGIN_CACHE_DIR }}
+          mkdir --parents ~/.terraform.d/plugin-cache
 
       - name: Terraform Format
         id: fmt
