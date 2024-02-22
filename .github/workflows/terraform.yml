@@ -75,7 +75,7 @@ env:
   TF_IN_AUTOMATION: true
 
   TF_CLI_ARGS_init: -backend-config=${{ inputs.backend_config }}
-  TF_PLUGIN_CACHE_DIR: ${{ github.workspace }}/.terraform.d/plugin-cache
+  TF_PLUGIN_CACHE_DIR: ${{ inputs.working_directory }}/.terraform.d/plugin-cache
 
   # Configure OIDC authentication to Azure using environment variables.
   # Required by the AzureRM backend and provider.
