@@ -256,6 +256,9 @@ jobs:
       - name: Terraform destroy
         run: terraform destroy -lock=false -auto-approve
 
+      - name: Terraform destroy
+        run: terraform state push errored.tfstate
+
       # Once the Terraform plan file has been applied, the artifact is no longer needed.
       # Delete it to save storage space.
       - name: Delete artifact
