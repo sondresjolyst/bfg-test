@@ -126,11 +126,6 @@ jobs:
       - name: Terraform Format
         id: fmt
         run: terraform fmt -check
-      
-      - name: Debug Before Init
-        run: |
-          echo "Contents of the cache directory:"
-          ls -la ~/.terraform.d/plugin-cache
 
       - name: Cache Terraform
         uses: actions/cache@v4
@@ -141,6 +136,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-terraform-
         
+      - name: Debug Before Init
+        run: |
+          echo "Contents of the cache directory:"
+          ls -la ~/.terraform.d/plugin-cache
+
       - name: Terraform Init
         id: init
         run: terraform init
