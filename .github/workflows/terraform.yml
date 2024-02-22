@@ -249,8 +249,11 @@ jobs:
           7z x -p"$ENCRYPTION_PASSWORD" terraform.tar.7z
           tar -xf terraform.tar
 
-      - name: Terraform Apply
-        run: terraform apply -auto-approve -input=false tfplan
+      # - name: Terraform Apply
+      #   run: terraform apply -auto-approve -input=false tfplan
+
+      - name: Terraform destroy
+        run: terraform destroy -auto-aprove
 
       # Once the Terraform plan file has been applied, the artifact is no longer needed.
       # Delete it to save storage space.
