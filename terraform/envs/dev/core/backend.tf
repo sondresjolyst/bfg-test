@@ -1,9 +1,9 @@
 terraform {
   required_version = "~> 1.7.0"
 
-  backend "azurerm" {
-    key = "dev.core.terraform.tfstate"
-  }
+  # backend "azurerm" {
+  #   key = "dev.core.terraform.tfstate"
+  # }
 
   required_providers {
     azurerm = {
