@@ -208,7 +208,7 @@ jobs:
       - name: Upload artifact
         id: upload
         if: steps.archive.outcome == 'success'
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: ${{ env.ARTIFACT_NAME }}
           path: ${{ inputs.working_directory }}/terraform.tar.7z
