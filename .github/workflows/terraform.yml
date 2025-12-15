@@ -129,7 +129,7 @@ jobs:
         run: terraform fmt -check
 
       - name: Cache Terraform
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: |
             ${{ env.TF_PLUGIN_CACHE_DIR }}
